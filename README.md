@@ -52,7 +52,7 @@ then create the [Certificate](./k8s/client-cert.yaml).
 
 `kubectl apply -f ./k8s/client-cert.yaml`
 
-and lastly, create the [Java application `Pod`](./k8s/gfclient.yaml); 
+and lastly, create the [Java application Pod](./k8s/gfclient.yaml); 
 substituting `<<IMAGE-REPOSITORY>>` where appropriate
 
 `kubectl apply -f ./k8s/gfclient.yaml`
