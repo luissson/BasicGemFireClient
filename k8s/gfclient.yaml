@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gfclient
+  namespace: app
+spec:
+  containers:
+  - name: gfclient 
+    image: <<IMAGE REPOSITORY>>/gfclient:latest # Replace '<<IMAGE REPOSITORY>>' with your image
+                                                # repository that hosts the gfclient image
+    imagePullPolicy: Always
+    volumeMounts:
+    - mountPath: /certs
+      name: cert-volume
+    env:
+    - name: "TRUST_STORE_PSWD"
+      valueFrom:
+        secretKeyRef:
+          name: client-cert
+          key: password
+    - name: "LOCATOR_HOST"
+      value: "gemfire-cluster-locator.default.svc.cluster.local"
+  volumes:
+  - name: cert-volume
+    secret:
+      secretName: client-cert

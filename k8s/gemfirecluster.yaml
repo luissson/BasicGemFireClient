@@ -1,0 +1,34 @@
+apiVersion: gemfire.vmware.com/v1
+kind: GemFireCluster
+metadata:
+  name: gemfire-cluster
+spec:
+  image: <<IMAGE REPOSITORY>>/vmware-gemfire:latest # Replace '<<IMAGE REPOSITORY>>' with your image
+                                                    # repository that hosts the vmware-gemfire image
+  antiAffinityPolicy: Cluster
+  locators:
+    replicas: 1
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: "1"
+      limits:
+        memory: 1Gi
+        cpu: "1"
+    persistentVolumeClaim:
+      resources:
+        requests:
+          storage: "1Gi"
+  servers:
+    replicas: 2
+    resources:
+      requests:
+        memory: 2Gi
+        cpu: "2"
+      limits:
+        memory: 2Gi
+        cpu: "2"
+    persistentVolumeClaim:
+      resources:
+        requests:
+          storage: "10Gi"
