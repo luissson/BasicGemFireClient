@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
   - name: gfclient 
-    image: <<IMAGE REPOSITORY>>/gfclient:latest # Replace '<<IMAGE REPOSITORY>>' with your image
+    image: <<IMAGE-REPOSITORY>>/gfclient:latest # Replace '<<IMAGE REPOSITORY>>' with your image
                                                 # repository that hosts the gfclient image
     imagePullPolicy: Always
     volumeMounts:

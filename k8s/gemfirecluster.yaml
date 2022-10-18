@@ -3,7 +3,7 @@ kind: GemFireCluster
 metadata:
   name: gemfire-cluster
 spec:
-  image: <<IMAGE REPOSITORY>>/vmware-gemfire:latest # Replace '<<IMAGE REPOSITORY>>' with your image
+  image: <<IMAGE-REPOSITORY>>/vmware-gemfire:latest # Replace '<<IMAGE REPOSITORY>>' with your image
                                                     # repository that hosts the vmware-gemfire image
   antiAffinityPolicy: Cluster
   locators:
