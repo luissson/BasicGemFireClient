@@ -17,7 +17,7 @@ public class BasicGemFireClient {
     this.region = region;
   }
 
-  public static void main(String[] args) throws InterruptedException {
+  public static void main(String[] args) {
     String locatorAddress = System.getenv("LOCATOR_HOST");
     if (locatorAddress == null) {
       System.out.println("Error: No environment value set for LOCATOR_HOST");
@@ -39,13 +39,11 @@ public class BasicGemFireClient {
     props.setProperty("ssl-truststore", "./certs/truststore.p12");
     props.setProperty("ssl-truststore-password", TRUST_PSWD);
 
-    // connect to the locator using default port 10334
     System.out.println("Attempting connection to locator " + locatorAddress);
     ClientCache cache = new ClientCacheFactory(props)
         .addPoolLocator(locatorAddress, 10334)
-        .set("log-level", "WARN").create();
+        .create();
 
-    // create a local region that matches the server region
     Region<Integer, String> region =
         cache.<Integer, String>createClientRegionFactory(ClientRegionShortcut.PROXY)
             .create("example-region");
