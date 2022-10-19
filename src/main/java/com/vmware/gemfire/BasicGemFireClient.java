@@ -55,8 +55,6 @@ public class BasicGemFireClient {
     example.getAndPrintValues(example.getRegionKeys());
 
     cache.close();
-
-    Thread.sleep(100000);
   }
 
   Set<Integer> getRegionKeys() {
@@ -69,8 +67,8 @@ public class BasicGemFireClient {
     }
   }
 
-  void getAndPrintValues(Set<Integer> values) {
-    for(Integer key : values) {
+  void getAndPrintValues(Set<Integer> keySet) {
+    for(Integer key : keySet) {
       System.out.printf("%d:%s%n", key, region.get(key));
     }
   }
