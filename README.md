@@ -12,12 +12,14 @@ To build the client, run from the root of the repository
 
 This produces a single executable jar file with dependencies included in the generated 'target' directory.
 
-To run the client, the following environment variables must be set to correct values
+To run the client, the following arguments are required
 
-| Env Var          | Value                                             |
+| Option          | Value                                             |
 |------------------|---------------------------------------------------|
-| LOCATOR_HOST     | IP or Hostname for a locator in a GemFire cluster |
-| TRUST_STORE_PSWD | Password for the certificate trust store          |
+| -h     | IP or Hostname for a locator in a GemFire cluster |
+| -p | Password for the certificate trust store and key store          |
+| -i | IP address for Kubernetes cluster ingress |
+| -o | Port number for Kubernetes cluster ingress |
 
 then execute 
 
