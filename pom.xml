@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <repositories>
+        <repository>
+            <id>gemfire-release-repo</id>
+            <name>Pivotal GemFire Release Repository</name>
+            <url>https://commercial-repo.pivotal.io/data3/gemfire-release-repo/gemfire</url>
+        </repository>
+    </repositories>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.vmware.gemfire</groupId>
     <artifactId>gemfireclient</artifactId>
@@ -33,9 +41,19 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.apache.geode</groupId>
+            <groupId>com.vmware.gemfire</groupId>
             <artifactId>geode-core</artifactId>
-            <version>1.15.0</version>
+            <version>9.15.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vmware.gemfire</groupId>
+            <artifactId>geode-wan</artifactId>
+            <version>9.15.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vmware.gemfire</groupId>
+            <artifactId>geode-cq</artifactId>
+            <version>9.15.4</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

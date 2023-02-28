@@ -34,9 +34,9 @@ public class BasicGemFireClient {
 
     props.setProperty("ssl-enabled-components", "all");
     props.setProperty("ssl-endpoint-identification-enabled", "true");
-    props.setProperty("ssl-keystore", "./certs/keystore.p12");
+    props.setProperty("ssl-keystore", "/certs/keystore.p12");
     props.setProperty("ssl-keystore-password", TRUST_PSWD);
-    props.setProperty("ssl-truststore", "./certs/truststore.p12");
+    props.setProperty("ssl-truststore", "/certs/truststore.p12");
     props.setProperty("ssl-truststore-password", TRUST_PSWD);
 
     System.out.println("Attempting connection to locator " + locatorAddress);

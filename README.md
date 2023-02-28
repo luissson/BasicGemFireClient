@@ -2,36 +2,33 @@
 
 # Project Description
 This project provides a basic example of a TLS-enabled GemFire client that's intended to run in Kubernetes and communicate with a
-GemFire for Kubernetes Cluster. See [[Link to Blog]] 
+GemFire for Kubernetes Cluster. See [Creating and Configuring an Encrypted GemFire Client in Java](https://tanzu.vmware.com/developer/data/gemfire/blog/tg4k8s-basic-client/) 
 
-# Build and Run
+# Pre-req
+
+This project uses GemFire 9.15.4 which is only available via the GemFire Commercial Repository. Please
+refer to [Obtaining VMware GemFire from a Maven Repository
+](https://docs.vmware.com/en/VMware-Tanzu-GemFire/9.15/tgf/GUID-getting_started-installation-obtain_gemfire_maven.html) 
+to be able to pull GemFire 9.15.4.
+
+# Build
 
 To build the client, run from the root of the repository
 
 `mvn clean compile assembly:single`
 
 This produces a single executable jar file with dependencies included in the generated 'target' directory.
+Then create a container image using the Dockerfile.
 
-To run the client, the following environment variables must be set to correct values
+`docker build --tag gfclient .`
 
-| Env Var          | Value                                             |
-|------------------|---------------------------------------------------|
-| LOCATOR_HOST     | IP or Hostname for a locator in a GemFire cluster |
-| TRUST_STORE_PSWD | Password for the certificate trust store          |
-
-then execute 
-
-`java -jar target/gemfireclient-1.0-SNAPSHOT-jar-with-dependencies.jar`
+The container image will be used by a Kubernetes pod when deploying.
 
 # Deploy
 
 Pre-requisites:
 * Kubernetes environment
 * A running GemFire for Kubernetes cluster with TLS and a region named 'example-region'
-
-To deploy the client to Kubernetes, create a container image (to be used by the Pod) using the provided Dockerfile.
-
-`docker build --tag gfclient .`
 
 Re-tag and push the generated image to the Docker repository of your choosing
 
